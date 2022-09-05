@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/jquery-3.6.1.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="laptop-container">
+            <img src="img/laptop.png" alt="">
+            <div id="laptop-area">
+                <div id="warning">
+                    <img src="img/warning.png" alt="">
+                    <div id="warning-close">X</div>
+                    <span>Only one secure connection can be done...</span>
+                </div>
+                <div id="loader">
+                    <div id="loading"></div>
+                    <div id="loader-text">
+                        <span id="loader-text-span">Starting up...</span>
+                    </div>
+                    <div class="bar">
+                        <div class="in"></div>
+                    </div>
+                </div>
+                <div id="notepad-app">
+                    <div id="notepad-header">
+                        <img src="img/notepad.png" alt="">
+                        <span>Nameless - Notepad</span>
+                        <div id="notepad-close"><span>X</span></div>
+                    </div>
+                    <div id="notepad-text">
+                        <textarea>Guns n shit: 2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega
+Drugs: mo28I1n0dzGTeozL0UXKn4JlCkiisX5qt.onion/alpha</textarea>
+                    </div>
+                </div>
+                <div id="browser">
+                    <div id="top-bar">
+                        <div id="tab"><span id="tab-span">Start</span><span id="tab-close">X</span></div>
+                        <div id="top-bar-close"><span>X</span></div>
+                    </div>
+                    <div id="url-bar">
+                        <div id="url-arrow">
+                            <img src="img/arrow.png" alt="">
+                        </div>
+                        <div id="url"><span id="url-span">Tor Browser</span></div>
+                    </div>
+                    <div id="home-page">
+                        <div id="home-page-img">
+                            <img src="img/tor.png" alt="">
+                        </div>
+                        <div id="home-page-search">
+                            <input autocomplete="off" id="search-input" type="text" placeholder="Enter URL here">
+                            <div id="home-page-button"><span>Search</span></div>
+                        </div>
+                    </div>
+                    <div id="browser-loader-wrapper">
+                        <div id="browser-loader" class="browser-loader">
+                        </div>
+                    </div>
+                    <div id="not-found">
+                        <div id="not-found-text">
+                            <span>404</span>
+                            <span>Not Found</span>
+                            <span>The resource requested could not be found on this server!</span>
+                            <span id="not-found-button">Make another search</span>
+                        </div>
+                    </div>
+                    <div id="weapons">
+                        <div id="weapons-header">
+                            <h1>Euro<span>Guns</span></h1>
+                            <div id="weapons-header-links">
+                                <span>Products</span>
+                                <span>FAQs</span>
+                            </div>
+                        </div>
+                        <div id="weapon-glock">
+                            <img src="img/glock.png" alt="">
+                            <div class="weapon-details">
+                                <span>Glock 17</span>
+                                <span>4000 SEK</span>
+                                <div class="weapon-options">
+                                    <div class="weapon-choice">-</div>
+                                    <div class="weapon-amount">0</div>
+                                    <div class="weapon-choice">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="weapon-glock">
+                            <img src="img/shotgun.png" alt="">
+                            <div class="weapon-details">
+                                <span>Sawed Off</span>
+                                <span>12000 SEK</span>
+                                <div class="weapon-options">
+                                    <div class="weapon-choice">-</div>
+                                    <div class="weapon-amount">0</div>
+                                    <div class="weapon-choice">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="weapon-glock">
+                            <img src="img/knife.png" alt="">
+                            <div class="weapon-details">
+                                <span>Knife</span>
+                                <span>3000 SEK</span>
+                                <div class="weapon-options">
+                                    <div class="weapon-choice">-</div>
+                                    <div class="weapon-amount">0</div>
+                                    <div class="weapon-choice">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="weapon-glock">
+                            <img src="img/grenade.png" alt="">
+                            <div class="weapon-details">
+                                <span>Grenade</span>
+                                <span>10000 SEK</span>
+                                <div class="weapon-options">
+                                    <div class="weapon-choice">-</div>
+                                    <div class="weapon-amount">0</div>
+                                    <div class="weapon-choice">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="weapon-glock">
+                            <img src="img/bat.png" alt="">
+                            <div class="weapon-details">
+                                <span>Bat</span>
+                                <span>2000 SEK</span>
+                                <div class="weapon-options">
+                                    <div class="weapon-choice">-</div>
+                                    <div class="weapon-amount">0</div>
+                                    <div class="weapon-choice">+</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="drugs"></div>
+                </div>
+                <div id="image">
+                    <div id="image-header">
+                        <span id="image-title">lol.jpg</span>
+                        <div id="image-close"><span id="image-close-span">X</span></div>
+                    </div>
+                    <img src="img/lol.jpg" alt="">
+                </div>
+                <div id="app-tor">
+                    <img src="img/tor.png" alt="">
+                    <span>Tor</span>
+                </div>
+                <div id="app-notepad">
+                    <img src="img/notepad.png" alt="">
+                    <span>Notepad</span>
+                </div>
+                <div id="app-image">
+                    <img src="img/lol.jpg" alt="">
+                    <span>lol</span>
+                </div>
+                <div id="start">
+                    <div id="start-user">
+                        <img src="img/user.png" alt="">
+                        <span>Admin</span>
+                    </div>
+                    <div id="start-buttons">
+                        <div id="start-off">
+                            <img src="img/off.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div id="laptop-footer">
+                    <div id="footer-icon"><img src="img/windows.png" alt=""></div>
+                    <div id="footer-search"><span>Write here to search</span></div>
+                    <div id="tor" >
+                        <div id="app-active"><img src="img/tor.png" alt=""></div>
+                    </div>
+                    <div id="notepad" class="app-active-active">
+                        <div id="app-active"><img src="img/notepad.png" alt=""></div>
+                    </div>
+                    <div id="wifi">
+                        <img src="img/wifi.png" alt="">
+                    </div>
+                    <div id="time">
+                        <span>18:17</span>
+                        <span>2022-09-05</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
