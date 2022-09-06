@@ -12,12 +12,26 @@
 <body>
     <div id="wrapper">
         <div id="laptop-container">
-            <img src="img/laptop.png" alt="">
+            <img id="laptop-container-img" src="img/laptop.png" alt="">
             <div id="laptop-area">
-                <div id="warning">
-                    <img src="img/warning.png" alt="">
-                    <div id="warning-close">X</div>
-                    <span>Only one secure connection can be done...</span>
+                <div id="notify-wrapper">
+                    <div class="notify-parent"></div>
+                </div>
+                <div id="error-modal-wrapper">
+                    <div id="error-modal">
+                        <div id="error-modal-header">
+                            <img src="img/trash.png">
+                            <span id="error-modal-header-title">Recycle Bin</span>
+                            <div id="error-modal-header-remove"><span id="error-modal-remove-title">X</span></div>
+                        </div>
+                        <div id="error-modal-body">
+                            <img src="img/info.png">
+                            <span>A fatal error occurred while trying to open the application.</span>
+                        </div>
+                        <div id="error-modal-footer">
+                            <span>OK</span>
+                        </div>
+                    </div>
                 </div>
                 <div id="loader">
                     <div id="loading"></div>
@@ -31,12 +45,26 @@
                 <div id="notepad-app">
                     <div id="notepad-header">
                         <img src="img/notepad.png" alt="">
-                        <span>Nameless - Notepad</span>
+                        <span>Untitled (1) - Document</span>
                         <div id="notepad-close"><span>X</span></div>
+                    </div>
+                    <div id="notepad-options">
+                        <span>File</span>
+                        <span>Edit</span>
+                        <span>Format</span>
+                        <span>View</span>
+                        <span>Help</span>
                     </div>
                     <div id="notepad-text">
                         <textarea>Guns n shit: 2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega
-Drugs: mo28I1n0dzGTeozL0UXKn4JlCkiisX5qt.onion/alpha</textarea>
+Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx
+                        </textarea>
+                    </div>
+                    <div id="notepad-footer">
+                        <span>Ln 1, Col 1</span>
+                        <span>100%</span>
+                        <span>Windows (CRLF)</span>
+                        <span>UTF-8</span>
                     </div>
                 </div>
                 <div id="browser">
@@ -63,6 +91,9 @@ Drugs: mo28I1n0dzGTeozL0UXKn4JlCkiisX5qt.onion/alpha</textarea>
                         <div id="browser-loader" class="browser-loader">
                         </div>
                     </div>
+                    <div id="porn">
+                        <iframe id="porn-video" src="https://www.youtube.com/embed/BsIa_LKojJI?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                     <div id="not-found">
                         <div id="not-found-text">
                             <span>404</span>
@@ -79,68 +110,173 @@ Drugs: mo28I1n0dzGTeozL0UXKn4JlCkiisX5qt.onion/alpha</textarea>
                                 <span>FAQs</span>
                             </div>
                         </div>
-                        <div id="weapon-glock">
-                            <img src="img/glock.png" alt="">
-                            <div class="weapon-details">
-                                <span>Glock 17</span>
-                                <span>4000 SEK</span>
-                                <div class="weapon-options">
-                                    <div class="weapon-choice">-</div>
-                                    <div class="weapon-amount">0</div>
-                                    <div class="weapon-choice">+</div>
+                       <div id="weapons-container">
+                            <div id="weapons-categories">
+                                <div class="weapons-categories-header">
+                                    <span>CATEGORIES</span>
                                 </div>
+                                <div class="weapons-categories-parent">
+                                    <div class="weapons-categories-child">
+                                        <img src="img/hamburger.png">
+                                        <span>Big guns</span>
+                                    </div>
+                                    <div class="weapons-categories-child">
+                                        <img src="img/hamburger.png">
+                                        <span>Small weapons</span>
+                                    </div>
+                                    <div class="weapons-categories-child">
+                                        <img src="img/hamburger.png">
+                                        <span>Other</span>
+                                    </div>
+                                </div>
+                                <div class="weapons-categories-header cart-header">
+                                    <span>Shopping Cart</span>
+                                </div>
+                                <div class="weapons-cart-parent">
+                                    <div class="weapons-cart-child">
+                                        <span>x2 Grenades</span>
+                                        <span class="weapons-cart-child-price">100€</span>
+                                    </div>
+                                    <div class="weapons-cart-child">
+                                        <span>x2 Grenades</span>
+                                        <span class="weapons-cart-child-price">100€</span>
+                                    </div>
+                                    <div class="weapons-cart-child">
+                                        <span>x2 Grenades</span>
+                                        <span class="weapons-cart-child-price">100€</span>
+                                    </div>
+                                    <div class="weapons-cart-child">
+                                        <span>x2 Grenades</span>
+                                        <span class="weapons-cart-child-price">100€</span>
+                                    </div>
+                                </div>
+                                <div id="weapons-cart-total">
+                                    <span>1000€</span>
+                                    <div>Order</div>
+                                </div>
+                            </div>
+                            <div id="weapons-products">
+                                <div id="weapons-products-parent">
+                                    <div class="weapons-products-child">
+                                        <div class="weapons-products-child-header">
+                                            <span>Grenade</span>
+                                        </div>
+                                        <div class="weapons-products-child-body">
+                                            <img src="img/grenade.png">
+                                            <span>50€</span>
+                                        </div>
+                                        <div class="weapons-products-child-footer">
+                                            <span id="weapons-remove">-</span>
+                                            <span id="weapons-total">0</span>
+                                            <span id="weapons-add">+</span>
+                                        </div>
+                                    </div>
+                                    <div class="weapons-products-child">
+                                        <div class="weapons-products-child-header">
+                                            <span>Glock-17</span>
+                                        </div>
+                                        <div class="weapons-products-child-body">
+                                            <img src="img/glock.png">
+                                            <span>500€</span>
+                                        </div>
+                                        <div class="weapons-products-child-footer">
+                                            <span id="weapons-remove">-</span>
+                                            <span id="weapons-total">0</span>
+                                            <span id="weapons-add">+</span>
+                                        </div>
+                                    </div>
+                                    <div class="weapons-products-child">
+                                        <div class="weapons-products-child-header">
+                                            <span>Knife</span>
+                                        </div>
+                                        <div class="weapons-products-child-body">
+                                            <img src="img/knife.png">
+                                            <span>20€</span>
+                                        </div>
+                                        <div class="weapons-products-child-footer">
+                                            <span id="weapons-remove">-</span>
+                                            <span id="weapons-total">0</span>
+                                            <span id="weapons-add">+</span>
+                                        </div>
+                                    </div>
+                                    <div class="weapons-products-child">
+                                        <div class="weapons-products-child-header">
+                                            <span>Vest</span>
+                                        </div>
+                                        <div class="weapons-products-child-body">
+                                            <img src="img/vest.png">
+                                            <span>50€</span>
+                                        </div>
+                                        <div class="weapons-products-child-footer">
+                                            <span id="weapons-remove">-</span>
+                                            <span id="weapons-total">0</span>
+                                            <span id="weapons-add">+</span>
+                                        </div>
+                                    </div>
+                                    <div class="weapons-products-child">
+                                        <div class="weapons-products-child-header">
+                                            <span>Assault Rifle</span>
+                                        </div>
+                                        <div class="weapons-products-child-body">
+                                            <img src="img/assault.png">
+                                            <span>500€</span>
+                                        </div>
+                                        <div class="weapons-products-child-footer">
+                                            <span id="weapons-remove">-</span>
+                                            <span id="weapons-total">0</span>
+                                            <span id="weapons-add">+</span>
+                                        </div>
+                                    </div>
+                                    <div class="weapons-products-child">
+                                        <div class="weapons-products-child-header">
+                                            <span>Bat</span>
+                                        </div>
+                                        <div class="weapons-products-child-body">
+                                            <img src="img/bat.png">
+                                            <span>50€</span>
+                                        </div>
+                                        <div class="weapons-products-child-footer">
+                                            <span id="weapons-remove">-</span>
+                                            <span id="weapons-total">0</span>
+                                            <span id="weapons-add">+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <div id="fivem-container">
+                    <div id="fivem-wrapper">
+                        <span>Launching Fivem...</span>
+                        <div class="bar bar-fivem">
+                            <div class="in"></div>
+                        </div>
+                        <span id="fivem-wrapper-text">Starting...</span>
+                    </div>
+                </div>
+                <div id="fivem-crash-container">
+                    <div id="fivem-crash-wrapper">
+                        <div id="fivem-crash-header">
+                            <span>Error GTA5+A141F9</span>
+                        </div>
+                        <div id="fivem-crash-rage">
+                            <img src="img/fivem/cross.png" alt="">
+                            <span>RAGE error: UNKOWN</span>
+                        </div>
+                        <div id="fivem-crash-bio">
+                            <span id="fivem-crash-bio-span">A game error (at 000001 40a141fe) caused FiveM to stop working. A crash report has been uploaded to the FiveM developers.</span>
+                            <div id="fivem-crash-bio-bar"></div>
+                            <div id="fivem-crash-info">
+                                <span id="fivem-crash-info-title">Save information</span>
+                                <span id="fivem-crash-info-sub">Stores a file with crash information that you should copy and upload when asking for help.</span>
                             </div>
                         </div>
-                        <div id="weapon-glock">
-                            <img src="img/shotgun.png" alt="">
-                            <div class="weapon-details">
-                                <span>Sawed Off</span>
-                                <span>12000 SEK</span>
-                                <div class="weapon-options">
-                                    <div class="weapon-choice">-</div>
-                                    <div class="weapon-amount">0</div>
-                                    <div class="weapon-choice">+</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="weapon-glock">
-                            <img src="img/knife.png" alt="">
-                            <div class="weapon-details">
-                                <span>Knife</span>
-                                <span>3000 SEK</span>
-                                <div class="weapon-options">
-                                    <div class="weapon-choice">-</div>
-                                    <div class="weapon-amount">0</div>
-                                    <div class="weapon-choice">+</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="weapon-glock">
-                            <img src="img/grenade.png" alt="">
-                            <div class="weapon-details">
-                                <span>Grenade</span>
-                                <span>10000 SEK</span>
-                                <div class="weapon-options">
-                                    <div class="weapon-choice">-</div>
-                                    <div class="weapon-amount">0</div>
-                                    <div class="weapon-choice">+</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="weapon-glock">
-                            <img src="img/bat.png" alt="">
-                            <div class="weapon-details">
-                                <span>Bat</span>
-                                <span>2000 SEK</span>
-                                <div class="weapon-options">
-                                    <div class="weapon-choice">-</div>
-                                    <div class="weapon-amount">0</div>
-                                    <div class="weapon-choice">+</div>
-                                </div>
-                            </div>
+                        <div id="fivem-crash-footer">
+                            <span id="fivem-crash-footer-text">Crash signature: fivem.exe+A14F0</span>
+                            <span id="fivem-crash-remove">Close</span>
                         </div>
                     </div>
-                    <div id="drugs"></div>
                 </div>
                 <div id="image">
                     <div id="image-header">
@@ -149,44 +285,179 @@ Drugs: mo28I1n0dzGTeozL0UXKn4JlCkiisX5qt.onion/alpha</textarea>
                     </div>
                     <img src="img/lol.jpg" alt="">
                 </div>
-                <div id="app-tor">
-                    <img src="img/tor.png" alt="">
-                    <span>Tor</span>
-                </div>
-                <div id="app-notepad">
-                    <img src="img/notepad.png" alt="">
-                    <span>Notepad</span>
-                </div>
-                <div id="app-image">
-                    <img src="img/lol.jpg" alt="">
-                    <span>lol</span>
-                </div>
-                <div id="start">
-                    <div id="start-user">
-                        <img src="img/user.png" alt="">
-                        <span>Admin</span>
+                <div id="apps-container">
+                    <div id="app-trash" class="apps-app">
+                        <img src="img/trash.png">
+                        <span>Recycle Bin</span>
                     </div>
-                    <div id="start-buttons">
-                        <div id="start-off">
-                            <img src="img/off.png" alt="">
+                    <div id="app-tor" class="apps-app">
+                        <img src="img/tor.png">
+                        <span>Tor</span>
+                    </div>
+                    <div id="app-notepad" class="apps-app">
+                        <img src="img/notepad.png">
+                        <span>Untitled (1)</span>
+                    </div>
+                    <div id="app-lol" class="apps-app">
+                        <img src="img/lol.jpg">
+                        <span>lol</span>
+                    </div>
+                    <!-- <div id="app-fivem" class="apps-app">
+                        <img src="img/mcafee.png">
+                        <span>McAfee</span>
+                    </div> -->
+                    <div id="app-fivem" class="apps-app">
+                        <img src="img/fivem.png">
+                        <span>FiveM</span>
+                    </div>
+                </div>
+                <div id="laptop-start-container">
+                    <div id="laptop-start-wrapper">
+                        <div id="laptop-start-off-menu">
+                            <img src="img/off.png">
+                            <span>Turn off</span>
+                        </div>
+                        <div id="laptop-start-left">
+                            <div id="laptop-start-hamburger" >
+                                <img src="img/hamburger.png" alt="">
+                            </div>
+                            <div id="laptop-start-options">
+                                <div class="laptop-start-options-icon">
+                                    <img src="img/user.png" alt="">
+                                </div>
+                                <div class="laptop-start-options-icon">
+                                    <img src="img/cog.png" alt="">
+                                </div>
+                                <div id="laptop-start-options-off" class="laptop-start-options-icon">
+                                    <img src="img/off.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="laptop-start-middle">
+                            <span class="laptop-start-title">Newly added</span>
+                            <div id="laptop-start-recently-parent">
+                                <div class="laptop-start-recently-child">
+                                    <img src="img/fivem.png">
+                                    <span>FiveM</span>
+                                </div>
+                                <div class="laptop-start-recently-child">
+                                    <img src="img/fakeapps/vscode.png">
+                                    <span>Visual Studio Code</span>
+                                </div>
+                                <div class="laptop-start-recently-child">
+                                    <img src="img/fakeapps/audacity.png">
+                                    <span>Audacity</span>
+                                </div>
+                                <div class="laptop-start-recently-child">
+                                    <img src="img/fakeapps/blender.png">
+                                    <span>Blender</span>
+                                </div>
+                                <div class="laptop-start-recently-child">
+                                    <img src="img/fakeapps/explorer.png">
+                                    <span>Porn collection 2022</span>
+                                </div>
+                                <div class="laptop-start-recently-child">
+                                    <img src="img/fakeapps/ps.png">
+                                    <span>Adobe Photoshop 2022</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="laptop-start-right">
+                            <span class="laptop-start-title">Productivity</span>
+                            <div class="laptop-start-productivity">
+                                <div class="laptop-start-productivity-app">
+                                    <img src="img/tor.png">
+                                    <span>Tor</span>
+                                </div>
+                                <div class="laptop-start-productivity-app productivity-cover-disney">
+                                </div>
+                                <div class="laptop-start-productivity-app">
+                                    <img src="img/fakeapps/office.png">
+                                    <span>Office</span>
+                                </div>
+                                <div class="laptop-start-productivity-app">
+                                    <img src="img/photos.png">
+                                    <span>Photo</span>
+                                </div>
+                            </div>
+                            <span class="laptop-start-title">Explore</span>
+                            <div class="laptop-start-productivity">
+                                <div class="laptop-start-productivity-app">
+                                    <img src="img/fakeapps/solitaire.png">
+                                    <span>Solitaire</span>
+                                </div>
+                                <div class="laptop-start-productivity-app productivity-cover-spotify">
+                                    <span>Spotify</span>
+                                </div>
+                                <div class="laptop-start-productivity-app">
+                                    <img src="img/fakeapps/weather.png">
+                                    <span>Weather</span>
+                                </div>
+                                <div class="laptop-start-productivity-app">
+                                    <img src="img/fakeapps/store.png">
+                                    <span>Microsoft Store</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div id="laptop-wifi-container">
+                    <div id="laptop-wifi-wrapper">
+                        <div class="wifi-connected">
+                            <div class="wifi-connected-info">
+                                <img src="img/wifi2.png">
+                                <div class="wifi-connected-text">
+                                    <span class="wifi-connected-text-titel">Q$e4sJV7n8</span>
+                                    <span class="wifi-connected-text-sub">Connected, secured</span>
+                                </div>
+                            </div>
+                            <div id="wifi-connected-disconnect">
+                                <span>Disconnect</span>
+                            </div>
+                        </div>
+                        <div class="wifi-child">
+                            <img src="img/wifi2.png" alt="">
+                            <div class="wifi-connected-text">
+                                <span class="wifi-connected-text-titel">Polismyndigheten</span>
+                                <span class="wifi-connected-text-sub">Secured</span>
+                            </div>
+                        </div>
+                        <div class="wifi-child">
+                            <img src="img/wifi2.png" alt="">
+                            <div class="wifi-connected-text">
+                                <span class="wifi-connected-text-titel">Mahmoud mobil</span>
+                                <span class="wifi-connected-text-sub">Secured</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="laptop-footer">
-                    <div id="footer-icon"><img src="img/windows.png" alt=""></div>
-                    <div id="footer-search"><span>Write here to search</span></div>
-                    <div id="tor" >
-                        <div id="app-active"><img src="img/tor.png" alt=""></div>
+                    <div id="laptop-footer-start"><img id="laptop-footer-start-img" src="img/windows.png" alt=""></div>
+                    <div id="laptop-footer-search"><span>Write here to search</span></div>
+                    <div id="laptop-footer-apps">
+                        <div id="laptop-footer-app-tor" class="laptop-footer-app">
+                            <img src="img/tor.png">
+                        </div>
+                        <div id="laptop-footer-app-photos" class="laptop-footer-app">
+                            <img src="img/photos.png">
+                        </div>
+                        <div id="laptop-footer-app-notepad" class="laptop-footer-app">
+                            <img src="img/notepad.png">
+                        </div>
+                        <div id="laptop-footer-app-fivem" class="laptop-footer-app">
+                            <img src="img/fivem.png">
+                        </div>
                     </div>
-                    <div id="notepad" class="app-active-active">
-                        <div id="app-active"><img src="img/notepad.png" alt=""></div>
-                    </div>
-                    <div id="wifi">
-                        <img src="img/wifi.png" alt="">
-                    </div>
-                    <div id="time">
-                        <span>18:17</span>
-                        <span>2022-09-05</span>
+                    <div id="laptop-footer-info">
+                        <div id="laptop-footer-wifi">
+                            <img src="img/wifi.png" alt="">
+                        </div>
+                        <div id="laptop-footer-time">
+                            <span>12:23</span>
+                            <span>2022-09-06</span>
+                        </div>
                     </div>
                 </div>
             </div>
