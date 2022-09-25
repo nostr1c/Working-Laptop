@@ -189,12 +189,63 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".virus-get", () => {
-        $("#blue-screen").delay(300).fadeIn();
+        generateBlueCrash();
+        $("#blue-screen").show();
         errorSound();
         blueScreenPercent();
+        setTimeout(function() {generateBlueRestart();}, 10000);
+        $("#blue-screen").delay(14000).fadeOut();
+        closeAll();
     });
-
 });
+
+function closeAll() {
+    $("#virus-overlay").html("");
+    $(".laptop-footer-app").hide();
+    $(".app").hide();
+    isBrowserActive = "false";
+    isNotepadActive = "false";
+    isImageActive = "false";
+    isFivemActive = "false";
+}
+
+function generateBlueCrash() {
+    let html = `
+        <div id="blue-screen-crash">
+            <div id="blue-screen-left">
+                <span id="blue-screen-sad">:(</span>
+                <span id="blue-screen-title">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</span>
+                <span id="blue-screen-percent">0% complete</span>
+                <div id="blue-screen-qr">
+                    <img src="img/icons/qr.png">
+                    <div id="blue-screen-qr-text">
+                        <span>For more information about this issue and possible fixes, visit https://www.windows.com/stopcode</span>
+                        <span>If you call a support person, give them this info:</span>
+                        <span>Stop code: CRITICAL PROCESS DIED</span>
+                    </div>
+                </div>
+            </div>
+            <img id="blue-screen-windows" src="img/icons/windows.png">
+        </div>
+    `;
+    $("#blue-screen").html(html);
+}
+
+function generateBlueRestart() {
+    let html = `
+        <div id="blue-screen-restart">
+                <div class='loader'>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                </div>
+                <span>Restarting</span>
+            </div>
+    `;
+    $("#blue-screen").html(html);
+}
 
 function generateViruses() {
     for(var i = 0; i < virusAmount; i++){
@@ -269,12 +320,9 @@ function setupPorn() {
         {
             $("#porn-video")[0].src += "&autoplay=1";
         }, 3400);
-    setTimeout(
-        function() 
-        {
+    setTimeout(function() {
             $("#tab-span").html("Hardcore po...");
-            $("#url-span").html(pornUrl + "/anal.php");   
-        }, 4000);
+            $("#url-span").html(pornUrl + "/anal.php");}, 4000);
 }
 
 function setup404() {
@@ -282,11 +330,7 @@ function setup404() {
     $("#browser-loader-wrapper").delay(100).fadeIn();
     $("#browser-loader-wrapper").delay(3000).fadeOut();
     $("#not-found").delay(4000).fadeIn();
-    setTimeout(
-        function() 
-        {
-            $("#tab-span").html("Not found");
-        }, 4000);
+    setTimeout(function() {$("#tab-span").html("Not found");}, 4000);
 }
 
 function clickSound() {
@@ -361,9 +405,9 @@ function blueScreenPercent() {
     setTimeout(function() {$("#blue-screen-percent").html("5% complete");}, 3000);
     setTimeout(function() {$("#blue-screen-percent").html("7% complete");}, 3500);
     setTimeout(function() {$("#blue-screen-percent").html("8% complete");}, 4000);
-    setTimeout(function() {$("#blue-screen-percent").html("15% complete");}, 4500);
-    setTimeout(function() {$("#blue-screen-percent").html("18% complete");}, 5000);
-    setTimeout(function() {$("#blue-screen-percent").html("20% complete");}, 6000);
-    setTimeout(function() {$("#blue-screen-percent").html("25% complete");}, 8000);
-    setTimeout(function() {$("#blue-screen-percent").html("29% complete");}, 10000);
+    setTimeout(function() {$("#blue-screen-percent").html("25% complete");}, 4500);
+    setTimeout(function() {$("#blue-screen-percent").html("43% complete");}, 5000);
+    setTimeout(function() {$("#blue-screen-percent").html("76% complete");}, 6000);
+    setTimeout(function() {$("#blue-screen-percent").html("78% complete");}, 8000);
+    setTimeout(function() {$("#blue-screen-percent").html("99% complete");}, 9000);
 }

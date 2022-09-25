@@ -31,7 +31,7 @@ body, html {
     height: 31.18vw;
     top: 1.9vw;
     left: 7.1vw;
-    background: url("img/background.png") no-repeat;
+    background: url("../img/background.png") no-repeat;
     background-size: cover;
 }
 #loader {
@@ -486,12 +486,12 @@ body, html {
     border: 0.15vw solid #423f3f;
 }
 .productivity-cover-disney {
-    background: url("img/fakeapps/disneyplus.png") no-repeat;
+    background: url("../img/fakeapps/disneyplus.png") no-repeat;
     background-size: cover;
     width: 1.3vw;
 }
 .productivity-cover-spotify {
-    background: url("img/fakeapps/itshits.jpg") no-repeat;
+    background: url("../img/fakeapps/itshits.jpg") no-repeat;
     background-size: cover;
     width: 1.3vw;
 }
@@ -873,7 +873,7 @@ textarea:focus, input:focus{
     position: absolute;
     width: 15vw;
     height: 18vw;
-    background: url("img/fivem/bground.png") no-repeat;
+    background: url("../img/fivem/bground.png") no-repeat;
     background-size: cover;
     top: 5.5vw;
     display: flex;
@@ -1347,7 +1347,7 @@ textarea:focus, input:focus{
     background-color: #008cff;
     user-select: none;
 }
-#blue-screen-wrapper {
+#blue-screen-crash {
     display: flex;
     flex-direction: row;
     margin: 8vw auto;
@@ -1392,4 +1392,14 @@ textarea:focus, input:focus{
     width: 4.5vw;
     height: 4.5vw;
     margin-left: 0;
+}
+#blue-screen-restart span {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 17.5vw;
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 100;
 }

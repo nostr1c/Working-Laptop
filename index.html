@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/loader.css">
     <script src="js/jquery-3.6.1.js"></script>
     <script src="js/script.js"></script>
 </head>
@@ -28,25 +29,19 @@
                     </div>
                 </div>
                 <div id="blue-screen">
-                    <div id="blue-screen-wrapper">
-                        <div id="blue-screen-left">
-                            <span id="blue-screen-sad">:(</span>
-                            <span id="blue-screen-title">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</span>
-                            <span id="blue-screen-percent">0% complete</span>
-                            <div id="blue-screen-qr">
-                                <img src="img/icons/qr.png">
-                                <div id="blue-screen-qr-text">
-                                    <span>For more information about this issue and possible fixes, visit https://www.windows.com/stopcode</span>
-                                    <span>If you call a support person, give them this info:</span>
-                                    <span>Stop code: CRITICAL PROCESS DIED</span>
-                                </div>
-                            </div>
+                    <div id="blue-screen-restart">
+                        <div class='loader'>
+                            <div class='circle'></div>
+                            <div class='circle'></div>
+                            <div class='circle'></div>
+                            <div class='circle'></div>
+                            <div class='circle'></div>
                         </div>
-                        <img id="blue-screen-windows" src="img/icons/windows.png">
+                        <span>Restarting</span>
                     </div>
                 </div>
                 <div id="virus-overlay"></div>
-                <div id="notepad-app">
+                <div class="app" id="notepad-app">
                     <div id="notepad-header">
                         <img src="img/apps/notepad.png" alt="">
                         <span>Untitled (1) - Document</span>
@@ -70,7 +65,7 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                         <span>UTF-8</span>
                     </div>
                 </div>
-                <div id="browser">
+                <div class="app" id="browser">
                     <div id="top-bar">
                         <div id="tab"><span id="tab-span">Start</span><span id="tab-close">X</span></div>
                         <div id="top-bar-close"><span>X</span></div>
@@ -249,7 +244,7 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                        </div>
                     </div>
                 </div>
-                <div id="fivem-container">
+                <div class="app" id="fivem-container">
                     <div id="fivem-wrapper">
                         <span>Launching Fivem...</span>
                         <div class="bar bar-fivem">
@@ -258,7 +253,7 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                         <span id="fivem-wrapper-text">Starting...</span>
                     </div>
                 </div>
-                <div id="fivem-crash-container">
+                <div class="app" id="fivem-crash-container">
                     <div id="fivem-crash-wrapper">
                         <div id="fivem-crash-header">
                             <span>Error GTA5+A141F9</span>
@@ -281,7 +276,7 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                         </div>
                     </div>
                 </div>
-                <div id="image">
+                <div class="app" id="image">
                     <div id="image-header">
                         <span id="image-title">lol.jpg</span>
                         <div id="image-close"><span id="image-close-span">X</span></div>
