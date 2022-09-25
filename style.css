@@ -335,7 +335,7 @@ body, html {
 .laptop-footer-app-active {
     background-color: #ffffff27;
 }
-#laptop-footer-app-tor, #laptop-footer-app-notepad, #laptop-footer-app-photos, #laptop-footer-app-fivem {
+#laptop-footer-app-tor, #laptop-footer-app-notepad, #laptop-footer-app-photos, #laptop-footer-app-fivem, #laptop-footer-app-mcafee {
     display: none;
 }
 #laptop-footer-info {
@@ -1266,4 +1266,130 @@ textarea:focus, input:focus{
     width:51.5vw;
     height:90%;
     bottom: 0;
+}
+#virus-overlay {
+    position: absolute;
+    z-index: 100;
+    height: 93%;
+    width: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+.virus-child {
+    background-color: #c71313;
+    width: 21vw;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    padding: 0.5vw 1vw;
+    pointer-events: all;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.virus-title {
+    font-size: 1vw;
+    font-weight: bold;
+}
+.virus-sub-title {
+    font-size: 0.8vw;
+    margin: 0.4vw 0;
+    font-weight: 600;
+}
+.virus-text {
+    font-size: 0.6vw;
+}
+.virus-footer {
+    padding-top: 0.5vw;
+    margin-top: 0.5vw;
+    border-top: 0.1vw solid #fff;
+    display: flex;
+    flex-direction: row;
+}
+.virus-footer img {
+    width: 4vw;
+    height: 0.8vw;
+    margin-top: 0.5vw;
+}
+.virus-accept {
+    margin: 0 0 0 auto;
+    border: 0.1vw solid #fff;
+    font-size: 0.6vw;
+    padding: 0.5vw 1vw;
+}
+.virus-accept:hover {
+    background-color: #fff;
+    color: #c71313;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.virus-get {
+    background-color: #fff;
+    color: #c71313;
+    font-size: 0.6vw;
+    margin-left: 0.6vw;
+    padding: 0.6vw 1.7vw;
+}
+.virus-get:hover {
+    background-color: transparent;
+    color: #fff;
+    user-select: none;
+    background-color: #b11414;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#blue-screen {
+    display: none;
+    position: absolute;
+    z-index: 200;
+    height: 100%;
+    width: 100%;
+    background-color: #008cff;
+    user-select: none;
+}
+#blue-screen-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 8vw auto;
+    width: max-content;
+}
+#blue-screen-left {
+    display: flex;
+    flex-direction: column;
+    width: 28vw;
+    color: #fff;
+}
+#blue-screen-sad {
+    font-size: 5vw;
+}
+#blue-screen-title {
+    margin: 1vw 0;
+    font-size: 0.9vw;
+}
+#blue-screen-percent {
+    font-size: 1vw;
+}
+#blue-screen-windows {
+    width: 12vw;
+    height: 12vw;
+    margin: auto 0 auto 4vw;
+}
+#blue-screen-qr {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.8vw;
+}
+#blue-screen-qr-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7vw;
+    margin-left: 0.7vw;
+}
+#blue-screen-qr-text span {
+    margin: 0.2vw 0;
+}
+#blue-screen-qr img {
+    width: 4.5vw;
+    height: 4.5vw;
+    margin-left: 0;
 }

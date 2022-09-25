@@ -1,4 +1,6 @@
 var notifyId = 0;
+var virusAmount = 8;
+var virusId = 0;
 var isBrowserActive = "false";
 var isNotepadActive = "false";
 var isImageActive = "false";
@@ -6,169 +8,243 @@ var isFivemActive = "false";
 var weaponUrl = "2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega";
 var pornUrl = "P67PTzMTy4ZmA7Sng3N.onion/xxx";
 
-$(document).on("click", "#laptop-area", () => {
-    clickSound();
-});
-
-$(document).on("click", "#laptop-start-options-off", () => {
-    $("#laptop-start-off-menu").toggleClass("--visible");
-});
-
-$(document).on("click", "#laptop-footer-start", () => {
-    $("#laptop-start-container").toggleClass("--visible");
-    $("#laptop-footer-start").toggleClass("laptop-footer-start-active");
-});
-
-$(document).on("click", "#laptop-footer-wifi", () => {
-    $("#laptop-wifi-container").toggleClass("--visible");
-    $("#laptop-footer-wifi").toggleClass("laptop-footer-wifi-active");
-});
-
-//Trash app
-$(document).on("dblclick", "#app-trash", () => {
-    errorModal({icon:"trash", title:"Recycle Bin", text:"A fatal error occurred while trying to open the application"});
-});
-
-$(document).on("click", ".error-modal-header-remove", () => {
-    $(".error-modal-wrapper").fadeOut();
-});
-
-$(document).on("click", ".error-modal-footer span", () => {
-    $(".error-modal-wrapper").fadeOut();
-});
-
-//Fivem app
-$(document).on('dblclick', '#app-fivem', () => {
-    if(isFivemActive == "true") {
-        notify({type:"error", text:"You can only have one open launcher..."});
-        errorSound();
-    }else {
-        fivemLoaderText();
-        $("#fivem-container").delay(1000).fadeIn()
-        .delay(6500).fadeOut("fast", function() {
+$(document).ready(function() {
+    $(document).on("click", "#laptop-area", () => {
+        clickSound();
+    });
+    
+    $(document).on("click", "#laptop-start-options-off", () => {
+        $("#laptop-start-off-menu").toggleClass("--visible");
+    });
+    
+    $(document).on("click", "#laptop-footer-start", () => {
+        $("#laptop-start-container").toggleClass("--visible");
+        $("#laptop-footer-start").toggleClass("laptop-footer-start-active");
+    });
+    
+    $(document).on("click", "#laptop-footer-wifi", () => {
+        $("#laptop-wifi-container").toggleClass("--visible");
+        $("#laptop-footer-wifi").toggleClass("laptop-footer-wifi-active");
+    });
+    
+    //Trash app
+    $(document).on("dblclick", "#app-trash", () => {
+        errorModal({icon:"trash", title:"Recycle Bin", text:"A fatal error occurred while trying to open the application"});
+    });
+    
+    $(document).on("click", ".error-modal-header-remove", () => {
+        $(".error-modal-wrapper").fadeOut();
+    });
+    
+    $(document).on("click", ".error-modal-footer span", () => {
+        $(".error-modal-wrapper").fadeOut();
+    });
+    
+    //Fivem app
+    $(document).on('dblclick', '#app-fivem', () => {
+        if(isFivemActive == "true") {
+            notify({type:"error", text:"You can only have one open launcher..."});
             errorSound();
-        });
-        $("#fivem-crash-container").delay(8000).fadeIn("fast");
-        $("#laptop-footer-app-fivem").fadeIn()
+        }else {
+            fivemLoaderText();
+            $("#fivem-container").delay(1000).fadeIn()
+            .delay(6500).fadeOut("fast", function() {
+                errorSound();
+            });
+            $("#fivem-crash-container").delay(8000).fadeIn("fast");
+            $("#laptop-footer-app-fivem").fadeIn()
+            .addClass("laptop-footer-app-active");
+            $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
+        }
+        isFivemActive = "true";
+    });
+    
+    $(document).on("click", "#fivem-crash-remove", () => {
+        $("#fivem-crash-container").delay(100).fadeOut();
+        $("#laptop-footer-app-fivem").delay(200).fadeOut();
+        isFivemActive ="false";
+    });
+    
+    //Image app
+    $(document).on('dblclick', '#app-lol', () => {
+        if(isImageActive == "true") {
+            notify({type:"error", text:"You can only have one open image..."});
+            errorSound();
+        }else {
+            $("#image").delay(500).fadeIn();
+            $("#laptop-footer-app-photos").fadeIn()
+            .addClass("laptop-footer-app-active");
+            $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+    
+        }
+        isImageActive = "true";
+    });
+    
+    $(document).on('click', '#image-close', () => {
+        $("#image").delay(200).fadeOut();
+        $("#laptop-footer-app-photos").delay(200).fadeOut();
+        isImageActive ="false";
+    });
+    
+    //Notepad app
+    $(document).on('dblclick', '#app-notepad', () => {
+        if(isNotepadActive == "true") {
+            notify({type:"error", text:"You can only have one open notepad..."});
+            errorSound();
+        }else {
+            $("#notepad-app").delay(500).fadeIn();
+            $("#laptop-footer-app-notepad").fadeIn()
+            .addClass("laptop-footer-app-active");
+            $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+        }
+        isNotepadActive = "true";
+    });
+    
+    $(document).on('click', '#notepad-close', () => {
+        $("#notepad-app").delay(200).fadeOut();
+        $("#laptop-footer-app-notepad").delay(200).fadeOut();
+        isNotepadActive ="false";
+    });
+    
+    //Tor app
+    $(document).on('dblclick', '#app-tor', () => {
+        if(isBrowserActive == "true") {
+            notify({type:"error", text:"You can only have one open session..."});
+            errorSound();
+        }else {
+            loaderText();
+            $("#loader").delay(2000).fadeIn()
+            .delay(5500).fadeOut();
+            $("#browser").delay(8500).fadeIn();
+            $("#laptop-footer-app-tor").delay(1000).fadeIn()
+            .addClass("laptop-footer-app-active");
+            $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
+        }
+        isBrowserActive = "true";
+    });
+    
+    $(document).on('click', '#top-bar-close', () => {
+        $("#browser").delay(200).fadeOut();
+        $("#laptop-footer-app-tor").delay(200).fadeOut();
+        isBrowserActive ="false";
+        $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
+    });
+    
+    $(document).on('click', '#tab-close', () => {
+        $("#browser").delay(200).fadeOut();
+        $("#laptop-footer-app-tor").delay(200).fadeOut();
+        isBrowserActive ="false";
+        $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
+    });
+    
+    //404 Tor Browser
+    $(document).on('click', '#not-found-button', () => {
+        $("#home-page").css("display", "block");
+        $("#not-found").css("display", "none");
+        $("#tab-span").html("Start");  
+    });
+    
+    //Search Tor
+    $(document).on('click', '#home-page-button', function(e) {
+        e.preventDefault();
+        var searchRequest = $("#search-input").val();
+        if(searchRequest == weaponUrl) {
+            setupWeapons();
+        } else if(searchRequest == pornUrl) {
+            setupPorn();
+        } else {
+            setup404();
+        }
+    });
+    
+    //Go back Tor Browser
+    $(document).on('click', '#url-arrow', () => {
+        $("#home-page").css("display", "block");
+        $("#weapons").css("display", "none");
+        $("#not-found").css("display", "none");
+        $("#porn").css("display", "none");
+        $("#tab-span").html("Start");
+        $("#url-span").html("Tor Browser");
+        $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
+    });
+
+    //Mcafee
+    $(document).on("dblclick", "#app-mcafee", () => {
+        $("#laptop-footer-app-mcafee").delay(50).fadeIn()
         .addClass("laptop-footer-app-active");
-        $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
-        $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
-        $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
-    }
-    isFivemActive = "true";
-});
+        generateViruses();
+    });
 
-$(document).on("click", "#fivem-crash-remove", () => {
-    $("#fivem-crash-container").delay(100).fadeOut();
-    $("#laptop-footer-app-fivem").delay(200).fadeOut();
-    isFivemActive ="false";
-});
+    $(document).on("click", ".virus-accept", function(e) {
+        e.preventDefault();
+        let currentVirus = $(this).data("id");
+        $(`#virus-${currentVirus}`).fadeOut()
+        .queue(function() { $(this).remove(); });
+        generateVirus();
+    });
 
-//Image app
-$(document).on('dblclick', '#app-lol', () => {
-    if(isImageActive == "true") {
-        notify({type:"error", text:"You can only have one open image..."});
+    $(document).on("click", ".virus-get", () => {
+        $("#blue-screen").delay(300).fadeIn();
         errorSound();
-    }else {
-        $("#image").delay(500).fadeIn();
-        $("#laptop-footer-app-photos").fadeIn()
-        .addClass("laptop-footer-app-active");
-        $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
-        $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+        blueScreenPercent();
+    });
 
-    }
-    isImageActive = "true";
 });
 
-$(document).on('click', '#image-close', () => {
-    $("#image").delay(200).fadeOut();
-    $("#laptop-footer-app-photos").delay(200).fadeOut();
-    isImageActive ="false";
-});
-
-//Notepad app
-$(document).on('dblclick', '#app-notepad', () => {
-    if(isNotepadActive == "true") {
-        notify({type:"error", text:"You can only have one open notepad..."});
+function generateViruses() {
+    for(var i = 0; i < virusAmount; i++){
+        virusId++
+        let randomTop = getRandomInt(22);
+        let randomLeft = getRandomInt(34);
+        let randomRotate = getRandomInt(180);
+        let html = `
+        <div id="virus-${virusId}" class="virus-child">
+            <span class="virus-title">Warning:</span>
+            <span class="virus-sub-title">Your protection from viruses has expired!</span>
+            <span class="virus-text">Purchase a subscription now to fight back against malware and other cyber threats.</span>
+            <div class="virus-footer">
+                <img src="img/fakeapps/mcafee.png">
+                <div data-id="${virusId}" class="virus-accept">Accept risk</div>
+                <div class="virus-get">Buy protection</div>
+            </div>
+        </div> `;
+        $("#virus-overlay").append(html);
+        $(`#virus-${virusId}`).css("top", `${randomTop}vw`)
+        .css("left", `${randomLeft}vw`);
         errorSound();
-    }else {
-        $("#notepad-app").delay(500).fadeIn();
-        $("#laptop-footer-app-notepad").fadeIn()
-        .addClass("laptop-footer-app-active");
-        $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
-        $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
     }
-    isNotepadActive = "true";
-});
+}
 
-$(document).on('click', '#notepad-close', () => {
-    $("#notepad-app").delay(200).fadeOut();
-    $("#laptop-footer-app-notepad").delay(200).fadeOut();
-    isNotepadActive ="false";
-});
+function generateVirus() {
+    virusId++
+    let randomTop = getRandomInt(22);
+    let randomLeft = getRandomInt(34);
+    let randomRotate = getRandomInt(180);
+    let html = `
+    <div id="virus-${virusId}" class="virus-child">
+        <span class="virus-title">Warning:</span>
+        <span class="virus-sub-title">Your protection from viruses has expired!</span>
+        <span class="virus-text">Purchase a subscription now to fight back against malware and other cyber threats.</span>
+        <div class="virus-footer">
+            <img src="img/fakeapps/mcafee.png">
+            <div data-id="${virusId}" class="virus-accept">Accept risk</div>
+            <div class="virus-get">Buy protection</div>
+        </div>
+    </div> `;
+    $("#virus-overlay").append(html);
+    $(`#virus-${virusId}`).css("top", `${randomTop}vw`)
+    .css("left", `${randomLeft}vw`);
+    errorSound();
+}
 
-//Tor app
-$(document).on('dblclick', '#app-tor', () => {
-    if(isBrowserActive == "true") {
-        notify({type:"error", text:"You can only have one open session..."});
-        errorSound();
-    }else {
-        loaderText();
-        $("#loader").delay(2000).fadeIn()
-        .delay(5500).fadeOut();
-        $("#browser").delay(8500).fadeIn();
-        $("#laptop-footer-app-tor").delay(1000).fadeIn()
-        .addClass("laptop-footer-app-active");
-        $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
-        $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
-    }
-    isBrowserActive = "true";
-});
-
-$(document).on('click', '#top-bar-close', () => {
-    $("#browser").delay(200).fadeOut();
-    $("#laptop-footer-app-tor").delay(200).fadeOut();
-    isBrowserActive ="false";
-    $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
-});
-
-$(document).on('click', '#tab-close', () => {
-    $("#browser").delay(200).fadeOut();
-    $("#laptop-footer-app-tor").delay(200).fadeOut();
-    isBrowserActive ="false";
-    $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
-});
-
-//404 Tor Browser
-$(document).on('click', '#not-found-button', () => {
-    $("#home-page").css("display", "block");
-    $("#not-found").css("display", "none");
-    $("#tab-span").html("Start");  
-});
-
-//Search Tor
-$(document).on('click', '#home-page-button', function(e) {
-    e.preventDefault();
-    var searchRequest = $("#search-input").val();
-    if(searchRequest == weaponUrl) {
-        setupWeapons();
-    } else if(searchRequest == pornUrl) {
-        setupPorn();
-    } else {
-        setup404();
-    }
-});
-
-//Go back Tor Browser
-$(document).on('click', '#url-arrow', () => {
-    $("#home-page").css("display", "block");
-    $("#weapons").css("display", "none");
-    $("#not-found").css("display", "none");
-    $("#porn").css("display", "none");
-    $("#tab-span").html("Start");
-    $("#url-span").html("Tor Browser");
-    $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
-});
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 function setupWeapons() {
     $("#home-page").css("display", "none");
@@ -257,91 +333,37 @@ function errorModal(content) {
     `;
     $(".error-modal-wrapper").html(html);
     $(".error-modal-wrapper").delay(500).fadeIn();
-    errorSound()
+    errorSound();
 }
 
 function loaderText() {
-    setTimeout(
-        function() 
-        {
-          $("#loader-text-span").html("Establishing Connection...");
-        }, 2500);
-    setTimeout(
-        function() 
-        {
-            $("#loader-text-span").html("Looking for cops...");
-        }, 3000);
-
-    setTimeout(
-        function() 
-        {
-            $("#loader-text-span").html("No cops found...");
-        }, 3500);
-
-    setTimeout(
-        function() 
-        {
-            $("#loader-text-span").html("Starting private session...");
-        }, 4000);
-
-    setTimeout(
-        function() 
-        {
-            $("#loader-text-span").html("Attempt #1 of connection...");
-        }, 4500);
-
-    setTimeout(
-        function() 
-        {
-            $("#loader-text-span").html("Connecting...");
-        }, 5000);
-
-    setTimeout(
-        function() 
-        {
-            $("#loader-text-span").html("Connection Established");
-        }, 6000);
+    setTimeout(function() {$("#loader-text-span").html("Establishing Connection...");}, 2500);
+    setTimeout(function() {$("#loader-text-span").html("Looking for cops...");}, 3000);
+    setTimeout(function() {$("#loader-text-span").html("No cops found...");}, 3500);
+    setTimeout(function() {$("#loader-text-span").html("Starting private session...");}, 4000);
+    setTimeout(function() {$("#loader-text-span").html("Attempt #1 of connection...");}, 4500);
+    setTimeout(function() {$("#loader-text-span").html("Connecting...");}, 5000);
+    setTimeout(function() {$("#loader-text-span").html("Connection Established");}, 6000);
 }
 
 function fivemLoaderText() {
-    setTimeout(
-        function() 
-        {
-          $("#fivem-wrapper-text").html("Looking for updates...");
-        }, 2500);
-    setTimeout(
-        function() 
-        {
-            $("#fivem-wrapper-text").html("Updates found...");
-        }, 3000);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Looking for updates...");}, 2500);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Updates found...");}, 3000);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Downloading updates...");}, 3500);
+    setTimeout( function() {$("#fivem-wrapper-text").html("Downloading /tmp/32/porn/gay/");}, 4000);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Downloading /tmp/32/porn/ultragay/ebony");}, 4500);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Download completing...");}, 5000);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Download complete!");}, 6000);
+}
 
-    setTimeout(
-        function() 
-        {
-            $("#fivem-wrapper-text").html("Downloading updates...");
-        }, 3500);
-
-    setTimeout(
-        function() 
-        {
-            $("#fivem-wrapper-text").html("Downloading /tmp/32/porn/gay/");
-        }, 4000);
-
-    setTimeout(
-        function() 
-        {
-            $("#fivem-wrapper-text").html("Downloading /tmp/32/porn/ultragay/ebony");
-        }, 4500);
-
-    setTimeout(
-        function() 
-        {
-            $("#fivem-wrapper-text").html("Download completing...");
-        }, 5000);
-
-    setTimeout(
-        function() 
-        {
-            $("#fivem-wrapper-text").html("Download complete!");
-        }, 6000);
+function blueScreenPercent() {
+    setTimeout(function() {$("#blue-screen-percent").html("3% complete");}, 2500);
+    setTimeout(function() {$("#blue-screen-percent").html("5% complete");}, 3000);
+    setTimeout(function() {$("#blue-screen-percent").html("7% complete");}, 3500);
+    setTimeout(function() {$("#blue-screen-percent").html("8% complete");}, 4000);
+    setTimeout(function() {$("#blue-screen-percent").html("15% complete");}, 4500);
+    setTimeout(function() {$("#blue-screen-percent").html("18% complete");}, 5000);
+    setTimeout(function() {$("#blue-screen-percent").html("20% complete");}, 6000);
+    setTimeout(function() {$("#blue-screen-percent").html("25% complete");}, 8000);
+    setTimeout(function() {$("#blue-screen-percent").html("29% complete");}, 10000);
 }
