@@ -7,6 +7,11 @@ var isImageActive = "false";
 var isFivemActive = "false";
 var weaponUrl = "2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega";
 var pornUrl = "P67PTzMTy4ZmA7Sng3N.onion/xxx";
+var virusTitles = [
+    "Purchase a subscription now to fight back against malware and other cyber threats.",
+    "System Detected (2) Potentially Malicious Viruses: Rootkit.Sirefef.Spy and Trojan.FakeAV-",
+    "SYSTEM MAY HAVE FOUND VIRUSES ON YOUR COMPUTER"
+];
 
 $(document).ready(function() {
     $(document).on("click", "#laptop-area", () => {
@@ -396,7 +401,7 @@ function fivemLoaderText() {
     setTimeout(function() {$("#fivem-wrapper-text").html("Looking for updates...");}, 2500);
     setTimeout(function() {$("#fivem-wrapper-text").html("Updates found...");}, 3000);
     setTimeout(function() {$("#fivem-wrapper-text").html("Downloading updates...");}, 3500);
-    setTimeout( function() {$("#fivem-wrapper-text").html("Downloading /tmp/32/porn/gay/");}, 4000);
+    setTimeout(function() {$("#fivem-wrapper-text").html("Downloading /tmp/32/porn/gay/");}, 4000);
     setTimeout(function() {$("#fivem-wrapper-text").html("Downloading /tmp/32/porn/ultragay/ebony");}, 4500);
     setTimeout(function() {$("#fivem-wrapper-text").html("Download completing...");}, 5000);
     setTimeout(function() {$("#fivem-wrapper-text").html("Download complete!");}, 6000);
@@ -413,9 +418,3 @@ function blueScreenPercent() {
     setTimeout(function() {$("#blue-screen-percent").html("78% complete");}, 8000);
     setTimeout(function() {$("#blue-screen-percent").html("99% complete");}, 9000);
 }
-
-var virusTitles = [
-    "Purchase a subscription now to fight back against malware and other cyber threats.",
-    "System Detected (2) Potentially Malicious Viruses: Rootkit.Sirefef.Spy and Trojan.FakeAV-",
-    "SYSTEM MAY HAVE FOUND VIRUSES ON YOUR COMPUTER"
-  ];
