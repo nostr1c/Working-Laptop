@@ -253,11 +253,12 @@ function generateViruses() {
         let randomTop = getRandomInt(22);
         let randomLeft = getRandomInt(34);
         let randomRotate = getRandomInt(180);
+        let randomTitle = virusTitles[Math.floor(Math.random()*virusTitles.length)];
         let html = `
         <div id="virus-${virusId}" class="virus-child">
             <span class="virus-title">Warning:</span>
             <span class="virus-sub-title">Your protection from viruses has expired!</span>
-            <span class="virus-text">Purchase a subscription now to fight back against malware and other cyber threats.</span>
+            <span class="virus-text">${randomTitle}</span>
             <div class="virus-footer">
                 <img src="img/fakeapps/mcafee.png">
                 <div data-id="${virusId}" class="virus-accept">Accept risk</div>
@@ -276,11 +277,12 @@ function generateVirus() {
     let randomTop = getRandomInt(22);
     let randomLeft = getRandomInt(34);
     let randomRotate = getRandomInt(180);
+    let randomTitle = virusTitles[Math.floor(Math.random()*virusTitles.length)];
     let html = `
     <div id="virus-${virusId}" class="virus-child">
         <span class="virus-title">Warning:</span>
         <span class="virus-sub-title">Your protection from viruses has expired!</span>
-        <span class="virus-text">Purchase a subscription now to fight back against malware and other cyber threats.</span>
+        <span class="virus-text">${randomTitle}</span>
         <div class="virus-footer">
             <img src="img/fakeapps/mcafee.png">
             <div data-id="${virusId}" class="virus-accept">Accept risk</div>
@@ -411,3 +413,9 @@ function blueScreenPercent() {
     setTimeout(function() {$("#blue-screen-percent").html("78% complete");}, 8000);
     setTimeout(function() {$("#blue-screen-percent").html("99% complete");}, 9000);
 }
+
+var virusTitles = [
+    "Purchase a subscription now to fight back against malware and other cyber threats.",
+    "System Detected (2) Potentially Malicious Viruses: Rootkit.Sirefef.Spy and Trojan.FakeAV-",
+    "SYSTEM MAY HAVE FOUND VIRUSES ON YOUR COMPUTER"
+  ];
