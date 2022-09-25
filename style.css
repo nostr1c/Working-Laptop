@@ -194,6 +194,9 @@ body, html {
     display: flex;
     flex-direction: column;
     padding: 0.3vw;
+    flex-wrap: wrap;
+    height: 30vw;
+    width: 7.5vw;
 }
 .apps-app {
     width: 2.3vw;
@@ -650,6 +653,7 @@ textarea:focus, input:focus{
 #not-found {
     display: none;
     margin-top: -2vw;
+    user-select: none;
 }
 #not-found-text {
     display: flex;
@@ -981,77 +985,78 @@ textarea:focus, input:focus{
     top: 0.49vw;
     position: absolute;
 }
-#error-modal-wrapper {
+.error-modal-wrapper {
     display: none;
     margin: 0 auto;
     width: 15vw;
 }
-#error-modal {
+.error-modal {
     position: absolute;
     background-color: #e6e6e6;
     width: 15vw;
     height: 5vw;
     margin-top: 13vw;
+    z-index: 10000;
 }
-#error-modal-header {
+.error-modal-header {
     background-color: #8da7cc;
     height: 1vw;
 }
-#error-modal-header img {
+.error-modal-header img {
     width: 0.7vw;
     margin-left: 0.3vw;
     top: 0.15vw;
     position: absolute;
 }
-#error-modal-header-title {
+.error-modal-header-title {
     font-size: 0.5vw;
     color: #4d4949;
     position: absolute;
     left: 1.3vw;
     top: 0.2vw;
 }
-#error-modal-header-remove {
+.error-modal-header-remove {
     position: absolute;
     right: 0;
     padding: 0 0.7vw;
     height: 1vw;
 }
-#error-modal-header-remove span {
+.error-modal-header-remove span {
     font-size: 0.7vw;
     color: #4d4949;
 }
-#error-modal-header-remove:hover {
+.error-modal-header-remove:hover {
     background-color: #b63d3d;
     cursor: pointer;
     transition-property: all;
     transition-duration: 0.2s;
 }
-#error-modal-header-remove:hover > #error-modal-remove-title {
+.error-modal-header-remove:hover > .error-modal-remove-title {
     color: #dddddd;
 }
-#error-modal-body {
+.error-modal-body {
     display: flex;
     flex-direction: row;
     margin: 0.8vw auto 0 auto;
     width: max-content;
 }
-#error-modal-body img {
+.error-modal-body img {
     width: 1.3vw;
     height: 1.3vw;
 }
-#error-modal-body span {
+.error-modal-body span {
     font-size: 0.5vw;
     margin: auto 0 auto 0.4vw;
     height: max-content;
 }
-#error-modal-footer {
+.error-modal-footer {
     background-color: #d6d6d6;
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 1.4vw;
 }
-#error-modal-footer span {
+.error-modal-footer span {
     position: absolute;
     font-size: 0.5vw;
     background-color: #b6b6b6;
@@ -1062,7 +1067,7 @@ textarea:focus, input:focus{
     padding: 0.1vw 0;
     border: 0.1vw solid rgb(0, 153, 255);
 }
-#error-modal-footer span:hover {
+.error-modal-footer span:hover {
     background-color: #a3a3a3;
     transition-property: all;
     transition-duration: 0.2;

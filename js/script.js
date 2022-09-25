@@ -24,22 +24,18 @@ $(document).on("click", "#laptop-footer-wifi", () => {
     $("#laptop-footer-wifi").toggleClass("laptop-footer-wifi-active");
 });
 
-
-
 //Trash app
 $(document).on("dblclick", "#app-trash", () => {
-    $("#error-modal-wrapper").delay(200).fadeIn();
+    errorModal({icon:"trash", title:"Recycle Bin", text:"A fatal error occurred while trying to open the application"});
 });
 
-$(document).on("click", "#error-modal-header-remove", () => {
-    $("#error-modal-wrapper").fadeOut();
+$(document).on("click", ".error-modal-header-remove", () => {
+    $(".error-modal-wrapper").fadeOut();
 });
 
-$(document).on("click", "#error-modal-footer span", () => {
-    $("#error-modal-wrapper").fadeOut();
+$(document).on("click", ".error-modal-footer span", () => {
+    $(".error-modal-wrapper").fadeOut();
 });
-
-
 
 //Fivem app
 $(document).on('dblclick', '#app-fivem', () => {
@@ -49,7 +45,9 @@ $(document).on('dblclick', '#app-fivem', () => {
     }else {
         fivemLoaderText();
         $("#fivem-container").delay(1000).fadeIn()
-        .delay(6500).fadeOut("fast");
+        .delay(6500).fadeOut("fast", function() {
+            errorSound();
+        });
         $("#fivem-crash-container").delay(8000).fadeIn("fast");
         $("#laptop-footer-app-fivem").fadeIn()
         .addClass("laptop-footer-app-active");
@@ -67,7 +65,6 @@ $(document).on("click", "#fivem-crash-remove", () => {
 });
 
 //Image app
-
 $(document).on('dblclick', '#app-lol', () => {
     if(isImageActive == "true") {
         notify({type:"error", text:"You can only have one open image..."});
@@ -89,7 +86,6 @@ $(document).on('click', '#image-close', () => {
     isImageActive ="false";
 });
 
-
 //Notepad app
 $(document).on('dblclick', '#app-notepad', () => {
     if(isNotepadActive == "true") {
@@ -110,7 +106,6 @@ $(document).on('click', '#notepad-close', () => {
     $("#laptop-footer-app-notepad").delay(200).fadeOut();
     isNotepadActive ="false";
 });
-
 
 //Tor app
 $(document).on('dblclick', '#app-tor', () => {
@@ -144,14 +139,12 @@ $(document).on('click', '#tab-close', () => {
     $("#porn-video")[0].src = "https://www.youtube.com/embed/BsIa_LKojJI?controls=0";
 });
 
-
 //404 Tor Browser
 $(document).on('click', '#not-found-button', () => {
     $("#home-page").css("display", "block");
     $("#not-found").css("display", "none");
     $("#tab-span").html("Start");  
 });
-
 
 //Search Tor
 $(document).on('click', '#home-page-button', function(e) {
@@ -165,7 +158,6 @@ $(document).on('click', '#home-page-button', function(e) {
         setup404();
     }
 });
-
 
 //Go back Tor Browser
 $(document).on('click', '#url-arrow', () => {
@@ -244,6 +236,28 @@ function notify(notifyText) {
     $(".notify-parent").append(html);
     $(`#notify-id-${notifyId}`).delay(3000).fadeOut()
     .queue(function() { $(this).remove(); });
+}
+
+function errorModal(content) {
+    let html = `
+        <div class="error-modal">
+            <div class="error-modal-header">
+                <img src="img/apps/${content.icon}.png">
+                <span class="error-modal-header-title">${content.title}</span>
+                <div class="error-modal-header-remove"><span class="error-modal-remove-title">X</span></div>
+            </div>
+            <div class="error-modal-body">
+                <img src="img/icons/info.png">
+                <span class="error-text">${content.text}</span>
+            </div>
+            <div class="error-modal-footer">
+                <span>OK</span>
+            </div>
+        </div>
+    `;
+    $(".error-modal-wrapper").html(html);
+    $(".error-modal-wrapper").delay(500).fadeIn();
+    errorSound()
 }
 
 function loaderText() {
