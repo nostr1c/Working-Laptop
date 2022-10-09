@@ -1527,7 +1527,7 @@ textarea:focus, input:focus{
     flex-direction: row;
 }
 #paint-thickness {
-    border: 0.15vw solid transparent;;
+    border: 0.15vw solid transparent;
     width: max-content;
     padding: 0.7vw;
     display: flex;
