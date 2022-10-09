@@ -5,6 +5,8 @@ var isBrowserActive = "false";
 var isNotepadActive = "false";
 var isImageActive = "false";
 var isFivemActive = "false";
+var isTsActive = "false";
+var isPaintActive = "false";
 var weaponUrl = "2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega";
 var pornUrl = "P67PTzMTy4ZmA7Sng3N.onion/xxx";
 var virusTitles = [
@@ -22,6 +24,10 @@ $(document).ready(function() {
         $("#laptop-start-off-menu").toggleClass("--visible");
     });
     
+    $(document).on("click", "#laptop-start-options-settings", () => {
+        $("#laptop-start-options-menu").toggleClass("--visible");
+    });
+
     $(document).on("click", "#laptop-footer-start", () => {
         $("#laptop-start-container").toggleClass("--visible");
         $("#laptop-footer-start").toggleClass("laptop-footer-start-active");
@@ -71,6 +77,51 @@ $(document).ready(function() {
         $("#laptop-footer-app-fivem").delay(200).fadeOut();
         isFivemActive ="false";
     });
+
+    //Transportstyrelsen app
+    $(document).on('dblclick', '#app-transportstyrelsen', () => {
+        if(isTsActive == "true") {
+            notify({type:"error", text:"You can only have one open Transportstyrelse..."});
+            errorSound();
+        }else {
+            $("#ts-wrapper").delay(500).fadeIn();
+            $("#laptop-footer-app-transportstyrelsen").fadeIn()
+            .addClass("laptop-footer-app-active");
+            $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
+        }
+        isTsActive = "true";
+    });
+
+    $(document).on("click", "#ts-close", () => {
+        $("#ts-wrapper").delay(100).fadeOut();
+        $("#laptop-footer-app-transportstyrelsen").delay(200).fadeOut();
+        isTsActive ="false";
+    });
+
+        //Paint app
+        $(document).on('dblclick', '#app-paint', () => {
+            if(isPaintActive == "true") {
+                notify({type:"error", text:"You can only have one open Paint..."});
+                errorSound();
+            }else {
+                $("#paint-wrapper").delay(500).fadeIn();
+                $("#laptop-footer-app-paint").fadeIn()
+                .addClass("laptop-footer-app-active");
+                $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
+                $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+                $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
+            }
+            isPaintActive = "true";
+        });
+    
+        $(document).on("click", "#paint-close", () => {
+            $("#paint-wrapper").delay(100).fadeOut();
+            $("#laptop-footer-app-paint").delay(200).fadeOut();
+            isPaintActive ="false";
+        });
+
     
     //Image app
     $(document).on('dblclick', '#app-lol', () => {
@@ -202,6 +253,19 @@ $(document).ready(function() {
         $("#blue-screen").delay(14000).fadeOut();
         closeAll();
     });
+
+    //Screen brightness
+    $(document).on('input', '#slider-brightness', function() {
+        let currentBrightness = $(this).val();
+        currentBrightness = 100 - currentBrightness;
+        $("#screen-light").css("opacity", `${currentBrightness}%`);
+    });
+
+    $(document).on("click", "#paint-thickness", () => {
+        $("#paint-thickness-menu").toggleClass("--visible")
+        $("#paint-thickness").toggleClass("paint-thickness-clicked")
+    });
+
 });
 
 function closeAll() {
@@ -212,6 +276,7 @@ function closeAll() {
     isNotepadActive = "false";
     isImageActive = "false";
     isFivemActive = "false";
+    isTsActive = "false";
 }
 
 function generateBlueCrash() {
@@ -257,7 +322,6 @@ function generateViruses() {
         virusId++
         let randomTop = getRandomInt(22);
         let randomLeft = getRandomInt(34);
-        let randomRotate = getRandomInt(180);
         let randomTitle = virusTitles[Math.floor(Math.random()*virusTitles.length)];
         let html = `
         <div id="virus-${virusId}" class="virus-child">
@@ -281,7 +345,6 @@ function generateVirus() {
     virusId++
     let randomTop = getRandomInt(22);
     let randomLeft = getRandomInt(34);
-    let randomRotate = getRandomInt(180);
     let randomTitle = virusTitles[Math.floor(Math.random()*virusTitles.length)];
     let html = `
     <div id="virus-${virusId}" class="virus-child">

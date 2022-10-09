@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="assets/fontawesome-free-6.2.0-web/css/all.css">
     <script src="js/jquery-3.6.1.js"></script>
     <script src="js/script.js"></script>
 </head>
@@ -15,6 +16,7 @@
         <div id="laptop-container">
             <img id="laptop-container-img" src="img/laptop.png" alt="">
             <div id="laptop-area">
+                <div id="screen-light"></div>
                 <div id="notify-wrapper">
                     <div class="notify-parent"></div>
                 </div>
@@ -55,8 +57,8 @@
                         <span>Help</span>
                     </div>
                     <div id="notepad-text">
-                        <textarea>Guns n shit: 2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega
-Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
+                        <textarea id="notepad-text">Guns n shit: 2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega
+Hot girlz: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                     </div>
                     <div id="notepad-footer">
                         <span>Ln 1, Col 1</span>
@@ -276,12 +278,71 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                         </div>
                     </div>
                 </div>
+                <div id="ts-wrapper">
+                    <div id="ts-header">
+                        <div id="ts-close">X</div>
+                    </div>
+                    <div id="ts-page-header">
+                        <img src="img/apps/transportstyrelsen-horizontal.png">
+                        <div id="ts-header-icons">
+                            <div class="ts-header-icon"><i class="fa-solid fa-car"></i>Vägtrafik</div>
+                            <div class="ts-header-icon"><i class="fa-solid fa-plane-up"></i>Luftfart</div>
+                            <div class="ts-header-icon"><i class="fa-solid fa-ship"></i>Sjöfart</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="app" id="image">
                     <div id="image-header">
                         <span id="image-title">lol.jpg</span>
                         <div id="image-close"><span id="image-close-span">X</span></div>
                     </div>
                     <img src="img/apps/lol.jpg" alt="">
+                </div>
+                <div id="paint-wrapper">
+                    <div id="paint-header">
+                        <div id="paint-close">x</div>
+                    </div>
+                    <div id="paint-options">
+                        <div id="paint-thickness">
+                            <i class="fa-solid fa-pen"></i>
+                            <i id="paint-i-down" class="fa-solid fa-sort-down"></i>
+                        </div>
+                        <div id="paint-thickness-menu">
+                            <div class="paint-thickness-activated" id="paint-thickness-normal">
+                                <i class="fa-solid fa-circle"></i>
+                                <span>Normal</span>
+                            </div>
+                            <div id="paint-thickness-thick">
+                                <i class="fa-solid fa-circle"></i>
+                                <span>Thick</span>
+                            </div>
+                            <div id="paint-thickness-thicker">
+                                <i class="fa-solid fa-circle"></i>
+                                <span>Thicker</span>
+                            </div>
+                        </div>
+                        <div id="paint-current-color"></div>
+                        <div id="paint-colors">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="paint-btn" id="paint-empty">
+                            <i class="fa-solid fa-trash-can"></i>
+                            <span>Empty</span>
+                        </div>
+                        <div class="paint-btn" id="paint-save">
+                            <i class="fa-solid fa-download"></i>
+                            <span>Save</span>
+                        </div>
+                    </div>
+                    <canvas width="670" height="250" id="paint-canvas"></canvas>
                 </div>
                 <div id="apps-container">
                     <div id="app-trash" class="apps-app">
@@ -308,12 +369,24 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                         <img src="img/apps/mcafee.png">
                         <span>Mcafee</span>
                     </div>
+                    <div id="app-paint" class="apps-app">
+                        <img src="img/apps/paint.png">
+                        <span>Paint</span>
+                    </div>
+                    <div id="app-transportstyrelsen" class="apps-app">
+                        <img src="img/apps/transportstyrelsen.png">
+                        <span>Transport-styrelsen</span>
+                    </div>
                 </div>
                 <div id="laptop-start-container">
                     <div id="laptop-start-wrapper">
                         <div id="laptop-start-off-menu">
                             <img src="img/icons/off.png">
                             <span>Turn off</span>
+                        </div>
+                        <div id="laptop-start-options-menu">
+                            <span>Brightness</span>
+                            <input class="slider" id="slider-brightness" type="range" min="25" max="100" value="100">
                         </div>
                         <div id="laptop-start-left">
                             <div id="laptop-start-hamburger" >
@@ -323,7 +396,7 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                                 <div class="laptop-start-options-icon">
                                     <img src="img/icons/user.png" alt="">
                                 </div>
-                                <div class="laptop-start-options-icon">
+                                <div id="laptop-start-options-settings" class="laptop-start-options-icon">
                                     <img src="img/icons/cog.png" alt="">
                                 </div>
                                 <div id="laptop-start-options-off" class="laptop-start-options-icon">
@@ -450,6 +523,12 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
                         <div id="laptop-footer-app-mcafee" class="laptop-footer-app">
                             <img src="img/apps/mcafee.png">
                         </div>
+                        <div id="laptop-footer-app-transportstyrelsen" class="laptop-footer-app">
+                            <img src="img/apps/transportstyrelsen.png">
+                        </div>
+                        <div id="laptop-footer-app-paint" class="laptop-footer-app">
+                            <img src="img/apps/paint.png">
+                        </div>
                     </div>
                     <div id="laptop-footer-info">
                         <div id="laptop-footer-wifi">
@@ -464,5 +543,6 @@ Raw porn: P67PTzMTy4ZmA7Sng3N.onion/xxx</textarea>
             </div>
         </div>
     </div>
+    <script src="js/paint.js"></script>
 </body>
 </html>
