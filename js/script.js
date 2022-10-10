@@ -1,6 +1,6 @@
 var notifyId = 0;
-var virusAmount = 8;
 var virusId = 0;
+var virusAmount = 8;
 var isBrowserActive = "false";
 var isNotepadActive = "false";
 var isImageActive = "false";
@@ -100,27 +100,27 @@ $(document).ready(function() {
         isTsActive ="false";
     });
 
-        //Paint app
-        $(document).on('dblclick', '#app-paint', () => {
-            if(isPaintActive == "true") {
-                notify({type:"error", text:"You can only have one open Paint..."});
-                errorSound();
-            }else {
-                $("#paint-wrapper").delay(500).fadeIn();
-                $("#laptop-footer-app-paint").fadeIn()
-                .addClass("laptop-footer-app-active");
-                $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
-                $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
-                $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
-            }
-            isPaintActive = "true";
-        });
-    
-        $(document).on("click", "#paint-close", () => {
-            $("#paint-wrapper").delay(100).fadeOut();
-            $("#laptop-footer-app-paint").delay(200).fadeOut();
-            isPaintActive ="false";
-        });
+    //Paint app
+    $(document).on('dblclick', '#app-paint', () => {
+        if(isPaintActive == "true") {
+            notify({type:"error", text:"You can only have one open Paint..."});
+            errorSound();
+        }else {
+            $("#paint-wrapper").delay(500).fadeIn();
+            $("#laptop-footer-app-paint").fadeIn()
+            .addClass("laptop-footer-app-active");
+            $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
+            $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
+        }
+        isPaintActive = "true";
+    });
+
+    $(document).on("click", "#paint-close", () => {
+        $("#paint-wrapper").delay(100).fadeOut();
+        $("#laptop-footer-app-paint").delay(200).fadeOut();
+        isPaintActive ="false";
+    });
 
     
     //Image app
@@ -208,7 +208,7 @@ $(document).ready(function() {
     //Search Tor
     $(document).on('click', '#home-page-button', function(e) {
         e.preventDefault();
-        var searchRequest = $("#search-input").val();
+        let searchRequest = $("#search-input").val();
         if(searchRequest == weaponUrl) {
             setupWeapons();
         } else if(searchRequest == pornUrl) {
@@ -261,6 +261,7 @@ $(document).ready(function() {
         $("#screen-light").css("opacity", `${currentBrightness}%`);
     });
 
+    //Paint thickness
     $(document).on("click", "#paint-thickness", () => {
         $("#paint-thickness-menu").toggleClass("--visible")
         $("#paint-thickness").toggleClass("paint-thickness-clicked")
@@ -277,6 +278,7 @@ function closeAll() {
     isImageActive = "false";
     isFivemActive = "false";
     isTsActive = "false";
+    isPaintActive = "false";
 }
 
 function generateBlueCrash() {

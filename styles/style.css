@@ -1656,3 +1656,26 @@ textarea:focus, input:focus{
     font-size: 0.7vw !important;
     margin-top: 0.5vw;
 }
+#paint-thickness-custom-menu {
+    display: none;
+}
+#paint-thickness-custom-menu div {
+    position: absolute;
+    background-color: #e4cece;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1vw 1vw 1vw;
+    left: 18vw;
+    top: 12vw;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#custom-thickness-i {
+    margin-bottom: 1vw;
+    font-size: 5px;
+}
+#custom-thickness-close {
+    margin: 0.4vw 0 0 auto;
+    cursor: pointer;
+    user-select: none;
+}

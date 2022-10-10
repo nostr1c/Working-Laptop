@@ -41,6 +41,21 @@ $(document).ready(function() {
         saveCanvas();
     });
 
+    $(document).on('input', '#thickness-range', function() {
+        thickness = $(this).val();
+        console.log(thickness);
+        $("#custom-thickness-i").css("font-size", `${thickness}px`);
+    });
+
+    $(document).on('click', '#custom-thickness-close', function() {
+        $("#paint-thickness-custom-menu").fadeOut();
+    });
+
+    $(document).on('click', '#paint-thickness-custom', function() {
+        $("#paint-thickness-custom-menu").fadeIn();
+    });
+
+
     // On mouse events on the canvas
     $canvas.mousedown(function (e) {
         lastEvent = e;
@@ -72,8 +87,8 @@ function emptyCanvas() {
 }
 
 function saveCanvas() {
-    let can = document.getElementById("paint-canvas");
+    let canvas = document.getElementById("paint-canvas");
     var img = new Image();
-    img.src = can.toDataURL();
+    img.src = canvas.toDataURL();
     document.body.appendChild(img);
 }
