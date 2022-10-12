@@ -358,14 +358,19 @@ body, html {
     transition-property: all;
     transition-duration: 0.2s;
 }
-#laptop-footer-wifi {
+.laptop-footer-btn {
     padding: 0.2vw;
 }
-#laptop-footer-wifi img {
+.laptop-footer-btn img {
     width: 0.8vw;
     margin-top: 0.5vw;
 }
-#laptop-footer-wifi:hover {
+.laptop-footer-btn i {
+    margin-top: 0.5vw;
+    font-size: 0.7vw;
+    color: #fff;
+}
+.laptop-footer-btn:hover {
     background-color: #ffffff13;
     transition-property: all;
     transition-duration: 0.2s;
@@ -1403,15 +1408,6 @@ textarea:focus, input:focus{
     font-size: 1vw;
     font-weight: 100;
 }
-#laptop-start-options-menu {
-    display: none;
-    position: absolute;
-    top: 9.25vw;
-    background-color: #1d1d1d;
-    width: 10vw;
-    height: 5vw;
-    z-index: 5;
-}
 #screen-light {
     position: absolute;
     top: 0;
@@ -1422,76 +1418,6 @@ textarea:focus, input:focus{
     opacity: 0%;
     pointer-events: none;
     z-index: 1000000;
-}
-.slider {
-    width: 6vw;
-    margin-left: 2vw;
-    height: 0.3vw;
-}
-#laptop-start-options-menu span {
-    color: #fff;
-    font-size: 0.6vw;
-    margin-left: 2vw;
-    margin-bottom: 0;
-}
-#ts-wrapper {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    width: 45vw;
-    height: 25vw;
-    top: 2vw;
-    left: 5vw;
-}
-#ts-header {
-    background-color: #dadada;
-}
-#ts-close {
-    background-color: #aeaeae;
-    width: 3vw;
-    margin: 0 0 0 auto;
-    text-align: center;
-    user-select: none;
-    cursor: pointer;
-    color: #fff;
-    font-size: 0.8vw;
-}
-#ts-close:hover {
-    background-color: #ff5555;
-    transition: 0.2s;
-}
-#ts-page-header {
-    display: flex;
-    flex-direction: row;
-    padding: 0.8vw 1.5vw;
-}
-#ts-page-header img {
-    width: 12vw;
-    height: 3vw;
-    margin-top: 0.75vw;
-}
-#ts-header-icons {
-    display: flex;
-    flex-direction: row;
-    width: max-content;
-    margin: auto;
-    cursor: pointer;
-    user-select: none;
-}
-.ts-header-icon {
-    padding: 0.4vw 1vw;
-    border-top: 0.2vw solid transparent;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 0.7vw;
-}
-.ts-header-icon i {
-    font-size: 2.5vw;
-    color: #575757;
-}
-.ts-header-icon:hover {
-    border-top: 0.2vw solid #575757;
 }
 #paint-wrapper {
     display: none;
@@ -1678,4 +1604,130 @@ textarea:focus, input:focus{
     margin: 0.4vw 0 0 auto;
     cursor: pointer;
     user-select: none;
+}
+#laptop-calendar-container {
+    display: none;
+    position: absolute;
+    background-color: #272727;
+    bottom: 2vw;
+    right: 0;
+    width: 15vw;
+    height: max-content;
+}
+#calendar-header {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    border-bottom: 0.1vw solid #47474f;
+    padding: 0.7vw;
+    user-select: none;
+}
+#calendar-header-time {
+    font-size: 2vw;
+}
+#calendar-header-date {
+    font-size: 0.7vw;
+}
+#calendar-dates-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.7vw;
+    user-select: none;
+    cursor: pointer;
+}
+#calendar-dates-wrapper div {
+    margin: 0.1vw;
+    width: 1.5vw;
+    height: 1.2vw;
+    text-align: center;
+    padding-top: 0.45vw;
+    font-size: 0.7vw;
+    color: #fff;
+    border: 0.1vw solid transparent;
+}
+.date-after, .date-not-used {
+    color: #ffffff47 !important;
+}
+#calendar-dates-wrapper div:hover {
+    border: 0.1vw solid gray;
+    transition: 0.2s;
+}
+#laptop-settings-container {
+    display: none;
+    position: absolute;
+    background-color: #272727;
+    bottom: 2vw;
+    right: 0;
+    width: 15vw;
+    height: max-content;
+}
+#settings-header {
+    padding: 0.7vw;
+    user-select: none;
+}
+#settings-header span {
+    font-size: 0.7vw;
+    color: #0070ba;
+    cursor: pointer;
+}
+#settings-header span:hover {
+    color: #0b91ea;
+    transition: 0.2s;
+}
+#settings-header span:nth-child(2) {
+    margin-left: 3.9vw;
+}
+#settings-body {
+    padding: 0.5vw 0.9vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+.settings-child {
+    background-color: #3c3b3b;
+    width: 4vw;
+    height: 2.7vw;
+    margin: 0.2vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+.settings-child:hover {
+    background-color: #342f2f;
+    transition: 0.2s;
+}
+.settings-child i {
+    font-size: 0.7vw;
+    margin: 0.3vw;
+}
+.settings-child span {
+    font-size: 0.5vw;
+    position: absolute;
+    bottom: 0.2vw;
+    left: 0.2vw;
+}
+#settings-brightness {
+    padding: 0.7vw;
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+#settings-brightness i {
+    color: #fff;
+    font-size: 0.7vw;
+    margin: 0.5vw;
+}
+#settings-brightness input {
+    height: 0.2vw;
+    margin: auto;
+}
+.setting-active {
+    background-color: #002fff;
+}
+.setting-active:hover {
+    background-color: #0a30da;
+    transition: 0.2s;
 }

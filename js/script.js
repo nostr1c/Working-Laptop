@@ -5,7 +5,6 @@ var isBrowserActive = "false";
 var isNotepadActive = "false";
 var isImageActive = "false";
 var isFivemActive = "false";
-var isTsActive = "false";
 var isPaintActive = "false";
 var weaponUrl = "2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega";
 var pornUrl = "P67PTzMTy4ZmA7Sng3N.onion/xxx";
@@ -16,6 +15,11 @@ var virusTitles = [
 ];
 
 $(document).ready(function() {
+    timeNow();
+    dateNow();
+    timeNowFull();
+
+
     $(document).on("click", "#laptop-area", () => {
         clickSound();
     });
@@ -23,11 +27,14 @@ $(document).ready(function() {
     $(document).on("click", "#laptop-start-options-off", () => {
         $("#laptop-start-off-menu").toggleClass("--visible");
     });
-    
-    $(document).on("click", "#laptop-start-options-settings", () => {
-        $("#laptop-start-options-menu").toggleClass("--visible");
-    });
 
+    $(document).on("click", "#laptop-footer-time", () => {
+        $("#calendar-dates-wrapper").html("");
+        $("#laptop-calendar-container").toggleClass("--visible");
+        $("#laptop-footer-time").toggleClass("laptop-footer-start-active");
+        setupCalendar();
+    });
+    
     $(document).on("click", "#laptop-footer-start", () => {
         $("#laptop-start-container").toggleClass("--visible");
         $("#laptop-footer-start").toggleClass("laptop-footer-start-active");
@@ -36,6 +43,11 @@ $(document).ready(function() {
     $(document).on("click", "#laptop-footer-wifi", () => {
         $("#laptop-wifi-container").toggleClass("--visible");
         $("#laptop-footer-wifi").toggleClass("laptop-footer-wifi-active");
+    });
+
+    $(document).on("click", "#laptop-footer-settings", () => {
+        $("#laptop-settings-container").toggleClass("--visible");
+        $("#laptop-footer-settings").toggleClass("laptop-footer-wifi-active");
     });
     
     //Trash app
@@ -76,28 +88,6 @@ $(document).ready(function() {
         $("#fivem-crash-container").delay(100).fadeOut();
         $("#laptop-footer-app-fivem").delay(200).fadeOut();
         isFivemActive ="false";
-    });
-
-    //Transportstyrelsen app
-    $(document).on('dblclick', '#app-transportstyrelsen', () => {
-        if(isTsActive == "true") {
-            notify({type:"error", text:"You can only have one open Transportstyrelse..."});
-            errorSound();
-        }else {
-            $("#ts-wrapper").delay(500).fadeIn();
-            $("#laptop-footer-app-transportstyrelsen").fadeIn()
-            .addClass("laptop-footer-app-active");
-            $("#laptop-footer-app-notepad").removeClass("laptop-footer-app-active");
-            $("#laptop-footer-app-tor").removeClass("laptop-footer-app-active");
-            $("#laptop-footer-app-photos").removeClass("laptop-footer-app-active");
-        }
-        isTsActive = "true";
-    });
-
-    $(document).on("click", "#ts-close", () => {
-        $("#ts-wrapper").delay(100).fadeOut();
-        $("#laptop-footer-app-transportstyrelsen").delay(200).fadeOut();
-        isTsActive ="false";
     });
 
     //Paint app
@@ -257,8 +247,8 @@ $(document).ready(function() {
     //Screen brightness
     $(document).on('input', '#slider-brightness', function() {
         let currentBrightness = $(this).val();
-        currentBrightness = 100 - currentBrightness;
-        $("#screen-light").css("opacity", `${currentBrightness}%`);
+        $("#settings-brightness i").css("transform", `rotate(${currentBrightness}deg)`)
+        $("#screen-light").css("opacity", `${100 - currentBrightness}%`);
     });
 
     //Paint thickness
@@ -277,7 +267,6 @@ function closeAll() {
     isNotepadActive = "false";
     isImageActive = "false";
     isFivemActive = "false";
-    isTsActive = "false";
     isPaintActive = "false";
 }
 
@@ -413,6 +402,79 @@ function clickSound() {
 function errorSound() {
     const audioError = new Audio("img/error.mp3" );
     audioError.play();
+}
+
+function updateTime(){
+    setTimeout('timeNow()', 60000);
+    setTimeout('timeNowFull()', 1000);
+}
+    
+function timeNow() {
+    let dateNow = new Date();
+    let minutesNow = dateNow.getMinutes();
+    let hoursNow = dateNow.getHours();
+    
+    minutesNow = minutesNow < 10 ? `0${minutesNow}` : minutesNow;
+    hoursNow = hoursNow < 10 ? `0${hoursNow}` : hoursNow;
+
+    $("#footer-time").html(`${hoursNow}:${minutesNow}`);
+    updateTime();
+}
+
+function timeNowFull() {
+    let dateNow = new Date();
+    let minutesNow = dateNow.getMinutes();
+    let hoursNow = dateNow.getHours();
+    let secondsNow = dateNow.getSeconds();
+    
+    minutesNow = minutesNow < 10 ? `0${minutesNow}` : minutesNow;
+    hoursNow = hoursNow < 10 ? `0${hoursNow}` : hoursNow;
+    secondsNow = secondsNow < 10 ? `0${secondsNow}` : secondsNow;
+
+    $("#calendar-header-time").html(`${hoursNow}:${minutesNow}:${secondsNow}`);
+    updateTime();
+}
+
+function dateNow() {
+    let dateNow = new Date();
+    let date = `${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate()}`;
+    $("#footer-date").html(date);
+
+    let monthNow = dateNow.getMonth() + 1;
+    let dayNow = dateNow.getDay();
+    monthNow = monthNow == 1 ? "January" : monthNow == 2 ? "February" : monthNow == 3 ? "Mars" : monthNow == 4 ? "April" : monthNow == 5 ? "May" : monthNow == 6 ? "June" : monthNow == 7 ? "July" : monthNow == 8 ? "August" : monthNow == 9 ? "September" : monthNow == 10 ? "October" : monthNow == 11 ? "November" : monthNow == 12 ? "December" : "";
+    dayNow = dayNow == 1 ? "Monday" : dayNow == 2 ? "Tuesday" : dayNow == 3 ? "Wednessday" : dayNow == 4 ? "Thursday" : dayNow == 5 ? "Friday" : dayNow == 6 ? "Saturday" : dayNow == 7 ? "Sunday" : "";
+    let dateFull = `${dayNow}, ${monthNow} ${dateNow.getDate()}, ${dateNow.getFullYear()}`;
+    $("#calendar-header-date").html(dateFull);
+}
+
+function setupCalendar() {
+    let dateNow = new Date();
+    let dayNow = dateNow.getDate();
+    let monthNow = dateNow.getMonth() + 1;
+    monthNow = monthNow == 1 ? 31 : monthNow == 2 ? 28 : monthNow == 3 ? 31 : monthNow == 4 ? 30 : monthNow == 5 ? 31 : monthNow == 6 ? 30 : monthNow == 7 ? 31 : monthNow == 8 ? 31 : monthNow == 9 ? 30 : monthNow == 10 ? 31 : monthNow == 11 ? 30 : monthNow == 12 ? 31 : "";
+
+    for(i = 0; i < monthNow; i++) {
+        let html = `<div>${i + 1}</div>`;
+        $("#calendar-dates-wrapper").append(html);
+    }
+
+    let daysLeft = 31 - monthNow;
+
+    let lastDay = $("#calendar-dates-wrapper div:last-child").html();
+
+    for(i = 0; i < daysLeft; i++) {
+        lastDay++;
+        let html = `<div class="date-not-used">${lastDay}</div>`;
+        $("#calendar-dates-wrapper").append(html);
+    }
+
+    for(i = 0; i < 11; i++) {
+        let html = `<div class="date-after">${i + 1}</div>`;
+        $("#calendar-dates-wrapper").append(html);
+    }
+
+    $(`#calendar-dates-wrapper div:nth-child(${dayNow})`).css("background-color", "blue");
 }
 
 function notify(notifyText) {
