@@ -1,11 +1,12 @@
 var notifyId = 0;
 var virusId = 0;
-var virusAmount = 8;
 var isBrowserActive = "false";
 var isNotepadActive = "false";
 var isImageActive = "false";
 var isFivemActive = "false";
 var isPaintActive = "false";
+var virusAmount = 8; //amount of virus popups
+let fillPercentage = 0.4; //battery percentage
 var weaponUrl = "2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega";
 var pornUrl = "P67PTzMTy4ZmA7Sng3N.onion/xxx";
 var virusTitles = [
@@ -18,7 +19,7 @@ $(document).ready(function() {
     timeNow();
     dateNow();
     timeNowFull();
-
+    setBattery();
 
     $(document).on("click", "#laptop-area", () => {
         clickSound();
@@ -260,6 +261,14 @@ $(document).ready(function() {
 
 });
 
+function setBattery() {
+    let fillMax = 0.56;
+    let fillBattery = fillMax * fillPercentage;
+    let batteryPercentage = fillPercentage * 100;
+    $("#battery-fill").css("width", `${fillBattery}vw`);
+    $("#battery-percentage").html(`${batteryPercentage}%`)
+}
+
 function closeAll() {
     $("#virus-overlay").html("");
     $(".laptop-footer-app").hide();
@@ -461,9 +470,7 @@ function setupCalendar() {
     }
 
     let daysLeft = 31 - monthNow;
-
     let lastDay = $("#calendar-dates-wrapper div:last-child").html();
-
     for(i = 0; i < daysLeft; i++) {
         lastDay++;
         let html = `<div class="date-not-used">${lastDay}</div>`;

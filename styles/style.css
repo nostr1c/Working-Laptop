@@ -360,6 +360,15 @@ body, html {
 }
 .laptop-footer-btn {
     padding: 0.2vw;
+    position: relative;
+}
+#battery-fill {
+    position: absolute;
+    width: 0.56vw;
+    height: 0.35vw;
+    top: 0.85vw;
+    left: 0.287vw;
+    background-color: #fff;
 }
 .laptop-footer-btn img {
     width: 0.8vw;
