@@ -16,7 +16,6 @@ var virusTitles = [
 ];
 
 $(document).ready(function() {
-    timeNow();
     dateNow();
     timeNowFull();
     setBattery();
@@ -415,22 +414,9 @@ function errorSound() {
 }
 
 function updateTime(){
-    setTimeout('timeNow()', 60000);
     setTimeout('timeNowFull()', 1000);
 }
     
-function timeNow() {
-    let dateNow = new Date();
-    let minutesNow = dateNow.getMinutes();
-    let hoursNow = dateNow.getHours();
-    
-    minutesNow = minutesNow < 10 ? `0${minutesNow}` : minutesNow;
-    hoursNow = hoursNow < 10 ? `0${hoursNow}` : hoursNow;
-
-    $("#footer-time").html(`${hoursNow}:${minutesNow}`);
-    updateTime();
-}
-
 function timeNowFull() {
     let dateNow = new Date();
     let minutesNow = dateNow.getMinutes();
@@ -442,6 +428,7 @@ function timeNowFull() {
     secondsNow = secondsNow < 10 ? `0${secondsNow}` : secondsNow;
 
     $("#calendar-header-time").html(`${hoursNow}:${minutesNow}:${secondsNow}`);
+    $("#footer-time").html(`${hoursNow}:${minutesNow}`);
     updateTime();
 }
 
