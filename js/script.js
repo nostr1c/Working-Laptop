@@ -247,7 +247,8 @@ $(document).ready(function() {
     //Screen brightness
     $(document).on('input', '#slider-brightness', function() {
         let currentBrightness = $(this).val();
-        $("#settings-brightness i").css("transform", `rotate(${currentBrightness}deg)`)
+        let fastBrightness = currentBrightness * 3;
+        $("#settings-brightness i").css("transform", `rotate(${fastBrightness}deg)`)
         $("#screen-light").css("opacity", `${100 - currentBrightness}%`);
     });
 
