@@ -6,7 +6,7 @@ var isImageActive = "false";
 var isFivemActive = "false";
 var isPaintActive = "false";
 var virusAmount = 8; //amount of virus popups
-let fillPercentage = 0.4; //battery percentage
+let fillPercentage = 0.5; //battery percentage
 var weaponUrl = "2KgEizHZfU7z7H38E7BxSeFMnyk0McISb.onion/omega";
 var pornUrl = "P67PTzMTy4ZmA7Sng3N.onion/xxx";
 var virusTitles = [
@@ -413,10 +413,6 @@ function errorSound() {
     audioError.play();
 }
 
-function updateTime(){
-    setTimeout('timeNowFull()', 1000);
-}
-    
 function timeNowFull() {
     let dateNow = new Date();
     let minutesNow = dateNow.getMinutes();
@@ -429,7 +425,7 @@ function timeNowFull() {
 
     $("#calendar-header-time").html(`${hoursNow}:${minutesNow}:${secondsNow}`);
     $("#footer-time").html(`${hoursNow}:${minutesNow}`);
-    updateTime();
+    setTimeout('timeNowFull()', 1000);
 }
 
 function dateNow() {
